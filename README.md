@@ -1,48 +1,109 @@
-# code explanation
+# Exam Result & Report Card System
 
+A MERN stack web application for managing exams, student marks, grades, and report cards with role-based authentication for admins and students.
 
-# Step 5.1 : authController.js
----------------------------------
-- backend/controllers/authController.js
+## Features
 
-Is controller ke do main functions honge:
-- register — new student/admin account create karna.
-- login — credentials verify karke JWT token return karna.
+- Student registration and login
+- Admin authentication and protected admin pages
+- Exam creation and management
+- Student marks entry and result calculation
+- Automatic percentage, grade, and Pass/Fail status calculation
+- Student dashboard and report card
+- Role-based access control
+- MongoDB database integration
 
-```js
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+## Tech Stack
+
+- **Frontend:** React, Vite
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB with Mongoose
+- **Authentication:** JSON Web Tokens (JWT)
+- **Password Security:** bcryptjs
+
+## Project Structure
+
+```text
+exam-result-system/
+├── backend/
+└── frontend/
 ```
 
-Inka use:
-- User: MongoDB mein user find/create karne ke liye.
-- bcrypt: password hash aur verify karne ke liye.
-- jsonwebtoken: login ke baad token generate karne ke liye.
+## Getting Started
 
+### Prerequisites
 
-2. Registration ka flow
-register function likhte waqt ye steps follow karo:
-1. req.body se name, email, password, role, rollNumber aur semester lo.
-2. Check karo ki required fields available hain.
-3. Check karo ki email pehle se registered toh nahi hai.
-4. Agar role student hai, toh roll number aur semester validate karo.
-5. Password ko bcrypt.hash() se hash karo.
-6. User model se user create karo.
-7. HTTP 201 response return karo. Password response mein kabhi mat bhejna.
+- Node.js and npm
+- MongoDB Atlas account or a local MongoDB instance
 
+### 1. Clone the repository
 
-3. Login ka flow
-login function mein:
-1. Email aur password request se lo.
-2. Email se user search karo.
-3. bcrypt.compare() se password verify karo.
-4. Agar credentials galat hain, toh 401 response do.
-5. jwt.sign() se token generate karo, jisme user ID aur role ho.
-6. Token aur safe user details return karo.
+```bash
+git clone <your-repository-url>
+cd exam-result-system
+```
 
+### 2. Set up the backend
 
-- JWT generate karne ke liye pehle banayi hui .env file mein JWT_SECRET set hona chahiye.
+```bash
+cd backend
+npm install
+```
 
+Create a `.env` file in the `backend` directory:
 
+```env
+PORT=5001
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_long_random_secret
+CLIENT_URL=http://localhost:5173
+```
 
+Start the backend:
+
+```bash
+npm run dev
+```
+
+### 3. Set up the frontend
+
+Open a new terminal:
+
+```bash
+cd frontend
+npm install
+```
+
+Create a `.env` file in the `frontend` directory:
+
+```env
+VITE_API_URL=http://localhost:5001
+```
+
+Start the frontend:
+
+```bash
+npm run dev
+```
+
+Open the local URL printed by Vite, usually `http://localhost:5173`.
+
+## Security Notes
+
+- Never commit `.env` files or real credentials to GitHub.
+- Use a strong, unique `JWT_SECRET`.
+- Student registration should assign the `student` role on the backend; users must not be able to register themselves as admins.
+- Change any development or seed-account passwords before sharing or deploying the application.
+
+## Deployment
+
+The application can be deployed using:
+- **Frontend:** Vercel
+- **Backend:** Render
+- **Database:** MongoDB Atlas
+
+Configure `VITE_API_URL`, `MONGO_URI`, `JWT_SECRET`, and `CLIENT_URL` using the hosting providers' environment-variable settings.
+
+## License
+
+Add a license if you intend to distribute or reuse this project publicly.
