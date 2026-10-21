@@ -1,4 +1,6 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
+// const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
+const API_URL = "https://exam-result-system-api-au4i.onrender.com";
 
 export const loginUser = async (email, password) => {
     const response = await fetch(`${API_URL}/api/auth/login`, {
