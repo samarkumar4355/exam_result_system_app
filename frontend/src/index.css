@@ -1,0 +1,172 @@
+
+.dashboard {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.dashboard-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.dashboard button {
+    padding: 10px 16px;
+    background: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .dashboard-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+@media (max-width: 650px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.report-table th,
+.report-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.report-table th {
+    background: #f2f2f2;
+}
+
+.report-summary {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+@media print {
+    .dashboard-header button,
+    .report-summary button,
+    .dashboard button {
+        display: none;
+    }
+
+    .dashboard {
+        margin: 0;
+        padding: 0;
+    }
+
+    .dashboard-card {
+        border: none;
+    }
+}
+
+
+
+
+
+.report-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.report-heading h2 {
+    margin-bottom: 5px;
+}
+
+.report-heading p {
+    color: #555;
+}
+
+.student-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 20px;
+    margin: 20px 0;
+}
+
+.report-summary {
+    margin-top: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+@media (max-width: 600px) {
+    .student-details {
+        grid-template-columns: 1fr;
+    }
+
+    .report-table th,
+    .report-table td {
+        padding: 7px;
+        font-size: 13px;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .report-card {
+        margin: 0;
+        padding: 20px;
+        border: none;
+        box-shadow: none;
+    }
+
+    .report-heading {
+        border-bottom: 1px solid #222;
+        padding-bottom: 10px;
+    }
+
+    .report-table {
+        page-break-inside: avoid;
+    }
+
+    .dashboard button {
+        display: none !important;
+    }
+}
